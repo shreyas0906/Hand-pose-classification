@@ -5,7 +5,7 @@ The idea is to classify the hand poses on the extracted landmarks (3D) rather th
 
 ![](hand_landmarks.png)
 
-Video demo can be found at [here](https://youtu.be/3V5tQBCl8wQ)
+Video demo can be found on [youtube](https://youtu.be/3V5tQBCl8wQ)
 ## Dataset creation and input pipeline.
 
 In this section,
