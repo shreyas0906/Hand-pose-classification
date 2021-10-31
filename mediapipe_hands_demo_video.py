@@ -53,15 +53,15 @@ with mp_hands.Hands(
                     index_finger_mcp = np.array((int(hand_landmarks.landmark[point.INDEX_FINGER_MCP].x * image_height),
                                                  int(hand_landmarks.landmark[point.INDEX_FINGER_MCP].y * image_width)))
 
-                    pinky_finger_mcp = np.array((int(hand_landmarks.landmark[point.PINKY_MCP].x * image_height),
-                                                 int(hand_landmarks.landmark[point.PINKY_MCP].y * image_width)))
-
                     middle_finger_mcp = np.array(
                         (int(hand_landmarks.landmark[point.MIDDLE_FINGER_MCP].x * image_height),
                          int(hand_landmarks.landmark[point.MIDDLE_FINGER_MCP].y * image_width)))
 
                     ring_finger_mcp = np.array((int(hand_landmarks.landmark[point.RING_FINGER_MCP].x * image_height),
                                                 int(hand_landmarks.landmark[point.RING_FINGER_MCP].y * image_width)))
+
+                    pinky_finger_mcp = np.array((int(hand_landmarks.landmark[point.PINKY_MCP].x * image_height),
+                                                 int(hand_landmarks.landmark[point.PINKY_MCP].y * image_width)))
 
                     thumb_cmc = np.array((int(hand_landmarks.landmark[point.THUMB_CMC].x * image_height),
                                           int(hand_landmarks.landmark[point.THUMB_CMC].y * image_width)))
@@ -77,19 +77,21 @@ with mp_hands.Hands(
                     mp_drawing.draw_landmarks(
                         image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
-                    vertices = np.array([[middle_finger_mcp[0], middle_finger_mcp[1]],
-                                         [index_finger_mcp[0], index_finger_mcp[1]],
+                    vertices = np.array([[index_finger_mcp[0], index_finger_mcp[1]],
+                                         [middle_finger_mcp[0], middle_finger_mcp[1]],
                                          [ring_finger_mcp[0], ring_finger_mcp[1]],
                                          [pinky_finger_mcp[0], pinky_finger_mcp[1]],
                                          [wrist[0], wrist[1]],
                                          [thumb_cmc[0], thumb_cmc[1]]], np.int32)
                     pts = vertices.reshape((-1, 1, 2))
                     cv2.polylines(image, [pts], isClosed=True, color=(0, 255, 255), thickness=1)
-
-                    # fill it
+                    # fill the palm zone.
                     cv2.fillPoly(image, [pts], color=(0, 255, 255))
+                    cv2.line(image, (index_finger_mcp[0], index_finger_mcp[1]),
+                             (pinky_finger_mcp[0], pinky_finger_mcp[1]), (255, 0, 0), thickness=3)
 
         cv2.imshow('MediaPipe Hands', image)
+        cv2.imshow('Original frame', cv2.flip(frame, 1))
 
         if cv2.waitKey(5) & 0xFF == ord('q'):
             cv2.destroyAllWindows()
