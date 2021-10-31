@@ -9,7 +9,7 @@ mp_hands = mp.solutions.hands
 
 video_folder = "Video/"
 # cap = cv2.VideoCapture(video_folder + 'video_3_30fps.mp4')
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(2)
 
 fps = cap.get(cv2.CAP_PROP_FPS)
 print(f"FPS: {fps}")
@@ -23,6 +23,7 @@ with mp_hands.Hands(
     while cap.isOpened():
         start = time.time()
         success, image = cap.read()
+        frame = image.copy()
 
         image_width, image_height, _ = image.shape
 
@@ -82,7 +83,8 @@ with mp_hands.Hands(
                                          [ring_finger_mcp[0], ring_finger_mcp[1]],
                                          [pinky_finger_mcp[0], pinky_finger_mcp[1]],
                                          [wrist[0], wrist[1]],
-                                         [thumb_cmc[0], thumb_cmc[1]]], np.int32)
+                                         [thumb_cmc[0], thumb_cmc[1]]], dtype=np.int32)
+
                     pts = vertices.reshape((-1, 1, 2))
                     cv2.polylines(image, [pts], isClosed=True, color=(0, 255, 255), thickness=1)
                     # fill the palm zone.
@@ -96,6 +98,5 @@ with mp_hands.Hands(
         if cv2.waitKey(5) & 0xFF == ord('q'):
             cv2.destroyAllWindows()
             cap.release()
-
 
 cap.release()

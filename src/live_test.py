@@ -127,7 +127,7 @@ class WebcamTest:
 
                     tmp1 = str(results.multi_hand_landmarks[0]).split()
                     coordinates_list = [elem for elem in tmp1 if elem != 'landmark' if elem != '{'
-                                   if elem != '}' if elem != 'x:' if elem != 'y:' if elem != 'z:']
+                                        if elem != '}' if elem != 'x:' if elem != 'y:' if elem != 'z:']
 
                     coordinates_array = np.array(coordinates_list, dtype='float32')
                     input_array = np.expand_dims(coordinates_array, axis=0)
