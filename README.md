@@ -51,7 +51,7 @@ usage:
 
 1. src/train.py contains all the configuration requirements to train the model.
 2. src/models.py contains the model arcitectures. Add your models here.
-3. src/train.py also test on the test set if the flags are set appropriately.
+3. src/train.py can test the model on live webcam feed or the test set if the flags are set appropriately.
 
 The code is pretty self-explanatory. If you need any explanations, please feel free to contact me at shreyas0906@gmail.com
 
