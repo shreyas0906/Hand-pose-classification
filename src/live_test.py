@@ -111,7 +111,7 @@ class WebcamTest:
                                                  [thumb_cmc[0], thumb_cmc[1]]], dtype=np.int32)
 
                             pts = vertices.reshape((-1, 1, 2))
-                            cv2.polylines(image, [pts], isClosed=True, color=(0, 255, 255), thickness=1)
+                            cv2.polylines(image, [pts], isClosed=True, color=(0, 0, 0), thickness=3)
 
                             # fill the palm zone.
                             cv2.fillPoly(image, [pts], color=(0, 200, 200))
@@ -136,12 +136,12 @@ class WebcamTest:
                 else:
                     predicted_label = "No hand"
 
-                cv2.putText(frame, predicted_label, (35, 35), self.font, 1, (0, 255, 255), 1, cv2.LINE_4)
+                cv2.putText(frame, predicted_label, (35, 35), self.font, 1, (255, 0, 0), 1, cv2.LINE_4)
                 cv2.putText(frame, str("{0:.3f}".format((time.time() - start_time) * 100)) + 'ms',
                             (35, 65), self.font, 1, (0, 0, 255), 2,
                             cv2.LINE_4)
-                cv2.imshow('Live Test', frame)
-                cv2.imshow('MediaPipe Hands', cv2.flip(image, 1))
+                cv2.imshow('Live Test', cv2.resize(frame, (320, 240)))
+                cv2.imshow('MediaPipe Hands', cv2.resize(cv2.flip(image, 1), (320, 240)))
 
                 if cv2.waitKey(5) & 0xFF == ord('q'):
                     self.on_destroy()
