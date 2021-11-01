@@ -78,6 +78,8 @@ We define a palm zone first, which is the area as shown in the figure.
 If a finger tip is in the palm zone, we can make appropriate guesses. 
 The advantages of this method is that, we don't need to train a deep learning model and also we can use this model as a baseline to compare it against the deep learning based model. 
 Also, since there is no inference, we can save around 5ms. (In most cases this is negligible).
+The disadvantages being that we have to manually code the finger tips to classify a gesture.
+It is hard to code for gestures like five and palm since the difference between the two poses is subtle.
 
 A horizontal line is drawn between index_finger_mcp(5) and pinky_mcp(17) (blue line in the video)
 
@@ -102,5 +104,5 @@ List of gestures we I have trained on:
 | HEAVY   | middle, ring | 
 
 
-check out the video for this method [here]().
+check out the video for this method [here](https://youtu.be/_au-ozgyGaY).
 
