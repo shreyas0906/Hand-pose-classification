@@ -114,7 +114,7 @@ class WebcamTest:
                             cv2.polylines(image, [pts], isClosed=True, color=(0, 255, 255), thickness=1)
 
                             # fill the palm zone.
-                            cv2.fillPoly(image, [pts], color=(0, 255, 255))
+                            cv2.fillPoly(image, [pts], color=(0, 200, 200))
 
                             # horizontal line from index finger to pinky finger
                             cv2.line(image, (index_finger_mcp[0], index_finger_mcp[1]),
