@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b0568c3-d59f-470a-9f75-928ab9b7c9b5" name="Changes" comment="Added video link and mentioned the disadvantages." />
+    <list default="true" id="2b0568c3-d59f-470a-9f75-928ab9b7c9b5" name="Changes" comment="updated video link." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,12 +152,13 @@
     <MESSAGE value="added test_csv and labels, printing accuracy with confusion matrix." />
     <MESSAGE value="updated display settings." />
     <MESSAGE value="Added video link and mentioned the disadvantages." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added video link and mentioned the disadvantages." />
+    <MESSAGE value="updated video link." />
+    <option name="LAST_COMMIT_MESSAGE" value="updated video link." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Hand_pose_classification$create_data.coverage" NAME="create_data Coverage Results" MODIFIED="1635176157988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Hand_pose_classification$mediapipe_hands_demo_video.coverage" NAME="mediapipe_hands_demo_video Coverage Results" MODIFIED="1635717295659" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Hand_pose_classification$test_inference.coverage" NAME="test_inference Coverage Results" MODIFIED="1635712476984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Hand_pose_classification$live_test.coverage" NAME="live_test Coverage Results" MODIFIED="1635758229211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Hand_pose_classification$live_test.coverage" NAME="live_test Coverage Results" MODIFIED="1635759574170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>
