@@ -20,6 +20,14 @@ from data import Dataloader
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
+def get_pose_labels():
+
+    with open('encoded_labels.json', 'r') as f:
+        labels = json.load(f, encoding='unicode_escape')
+
+    return labels
+
+
 def genModelPath():
     now = datetime.datetime.now()
 
@@ -116,7 +124,7 @@ def test(args):
         test_on_camera = WebcamTest(model)
         test_on_camera.detectHands()
     elif args.test_csv:
-        test_folder(model, args.csv)
+        test_folder(model, args.test_csv)
 
 
 def test_folder(model, csv):
@@ -125,29 +133,37 @@ def test_folder(model, csv):
     test_images = test_csv['file_name']
     test_label = list(test_csv['label']) 
     predicted_label = []
-    
+    labels = get_pose_labels()
+
     for img_file_name in tqdm.tqdm(test_images, desc='Testing on images.'):     
         file_path = img_file_name.split("../../")[1]
         img = cv2.imread(file_path)
 
         img = np.expand_dims(img, axis=0)
-        predicted_label.append(model.predict(img))
+        prediction = np.argmax(model.predict(img))
+        predicted_label.append(labels[prediction])
 
     confusion_mat = confusion_matrix(test_label, predicted_label)
-    print(f"confusion matrix: {confusion_mat}")
+    accuracy = accuracy_score(test_label, predicted_label)
+    print(f"confusion matrix: {confusion_mat} accuracy: {accuracy}")
     
 
 if __name__ == '__main__':
 
     p = ArgumentParser()
-    p.add_argument('--csv', type=str, required=False, default='../data/landmarks.csv', help='Location of the csv file containing landmarks data')
-    p.add_argument('--split_size', type=float, required=False, default=0.05, help='Splitting the data to train and test size')
+    p.add_argument('--csv', type=str, required=False, default='../data/landmarks.csv', help='Location of the csv file '
+                                                                                            'containing landmarks '
+                                                                                            'data')
+    p.add_argument('--split_size', type=float, required=False, default=0.05, help='Splitting the data to train and '
+                                                                                  'test size')
+    p.add_argument('--test_csv', required=False, type=str, default='../Test_images/test_data.csv', help='Folder '
+                                                                                                        'containing '
+                                                                                                        'test images')
+    p.add_argument('--test_live', required=False, type=str, default='False', help='Testing on live video')
     p.add_argument('--batch_size', required=False, default=64, type=int, help='Batch size for training')
     p.add_argument('--epochs', required=False, type=int, default=10, help='Number of training epochs')
     p.add_argument('--train', required=True, type=str, default='True', help='Train mode')
     p.add_argument('--test', required=True, type=str, default='False', help='Test mode')
-    p.add_argument('--test_csv', required=False, type=str, default='../Test_images/test_data.csv', help='Folder containing test images')
-    p.add_argument('--test_live', required=False, type=str, default='False', help='Testing on live video')
 
     print(p.format_usage())
     args = p.parse_args()
