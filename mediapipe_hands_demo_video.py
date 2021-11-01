@@ -8,7 +8,6 @@ mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
 video_folder = "Video/"
-# cap = cv2.VideoCapture(video_folder + 'video_3_30fps.mp4')
 cap = cv2.VideoCapture(2)
 
 fps = cap.get(cv2.CAP_PROP_FPS)
