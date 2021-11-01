@@ -69,7 +69,6 @@ class WebcamTest:
                     print("No camera connected.")
                     break
 
-                # hand_frame = frames.copy()
                 start_time = time.time()
                 frames = cv2.cvtColor(cv2.flip(frames, 1), cv2.COLOR_BGR2RGB)
                 frames.flags.writeable = False
@@ -125,9 +124,9 @@ class WebcamTest:
                             cv2.line(image, (index_finger_mcp[0], index_finger_mcp[1]),
                                      (thumb_cmc[0], thumb_cmc[1]), (0, 0, 255), thickness=2)
 
-                    tmp1 = str(results.multi_hand_landmarks[0]).split()
-                    coordinates_list = [elem for elem in tmp1 if elem != 'landmark' if elem != '{'
-                                        if elem != '}' if elem != 'x:' if elem != 'y:' if elem != 'z:']
+                    landmarks_results = str(results.multi_hand_landmarks[0]).split()
+                    coordinates_list = [coordinate for coordinate in landmarks_results if coordinate != 'landmark' if coordinate != '{'
+                                        if coordinate != '}' if coordinate != 'x:' if coordinate != 'y:' if coordinate != 'z:']
 
                     coordinates_array = np.array(coordinates_list, dtype='float32')
                     input_array = np.expand_dims(coordinates_array, axis=0)
