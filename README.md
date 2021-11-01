@@ -104,5 +104,5 @@ List of gestures we I have trained on:
 | HEAVY   | middle, ring | 
 
 
-check out the video for this method [here](https://youtu.be/_au-ozgyGaY).
+check out the video for this method [here](https://www.youtube.com/watch?v=_au-ozgyGaY).
 
